@@ -43,6 +43,17 @@ def getNameAndGrade(s):
     temp.append(s[-1])
     return temp    
 
+def outputToCSV():
+    target = open(OUTPUT_FILE,'w')
+    for grade in grades:
+        appendAverage(grade)
+        print(grade)
+        for d in grade:
+            target.write(str(d) + ",")
+        target.write("\n")
+    target.close()    
+
+
 # Updates the grades list with a new grade from a problem
 def appendToGrades(s):
     found = False
@@ -70,11 +81,9 @@ if __name__ == "__main__":
             # insert into grades
             appendToGrades(student)
 
+    outputToCSV()
 
-
-    for grade in grades:
-        appendAverage(grade)
-        print(grade)
+        
 
 
 
